@@ -1,4 +1,4 @@
-//2.1.2 ี๛ะอ
+//2.1.2 ร•รปรร
 #include <stdio.h>
 int main(){
 	int a=1,b=2;
