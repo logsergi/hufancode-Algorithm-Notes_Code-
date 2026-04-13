@@ -1,0 +1,37 @@
+用c语言的库函数qsort或者C++中的sort函数进行排序
+
+1.相关结构体的定义
+struct Student{
+char name[10];//姓名
+char id[10];//准考证号
+int score;//分数
+int r;//排名
+}stu[100010];
+
+2.cmp函数的编写
+bool cmp(Student a,Student b){
+if(a.score!=b.score)return a.score>b.score;
+else return strcmp(a.name,b.name)<0;//成立返回一个正数，不成立返回一个负数
+}
+
+3.排名的实现
+法①
+stu[0].r=1;
+for(int i=1;i<n;i++){
+if(stu[i].score==stu[i-1].score){
+stu[i].r=stu[i-1].r;
+}
+else{
+stu[i].r=i+1;
+}
+}
+
+法②
+int r=1;
+for(int i=0;i<n;i++){
+if(i>0&&stu[i].score!=stu[i-1].score){
+r=i+1;
+}
+}
+
+

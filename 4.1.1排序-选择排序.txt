@@ -1,0 +1,14 @@
+第二章已经介绍冒泡排序了
+void selectSort(A[]){
+for(int i=1;i<=n;i++){
+int k=i;
+for(int j=i;j<=n;j++){
+if(A[j]<A[k])k=j;//更新最小值的序号
+}
+int temp=A[i];//交换A[k]与A[i]，这样A[i]每轮就被确定下来了
+A[i]=A[k];
+A[k]=temp;
+}
+}
+
+时间复杂度为O（n²）
