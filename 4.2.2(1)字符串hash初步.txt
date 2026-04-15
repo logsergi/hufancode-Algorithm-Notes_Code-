@@ -1,0 +1,33 @@
+字符串映射为整数
+int hashFunc(char S[],int len){
+int id=0;
+for(int i=0;i<len;i++){
+id=id*26+S[i]-'A';
+}
+return id;
+}
+
+出现小写字母
+int hashFunc(char S[],int len){
+for(int i=0;i<len;i++){
+if(S[i]>='A'&&S[i]<='Z'){
+id=id*52+(S[i]-'A');
+}
+else if(S[i]>='a'&&S[i]<='z'){
+id=id*52+(S[i]-'a')+26
+}
+}
+return id;
+
+出现数字
+1.按照小写字母的处理方法，增大进制数至62
+2.末尾是确定个数的数字：
+int hashFunc(char S[],int len){
+int id=0;
+for(int i=0;i<len;i++){
+id=id*26+(S[i]-'A');
+}
+id=id*10+(S[len-1]-'0');
+return 0;
+}
+}
