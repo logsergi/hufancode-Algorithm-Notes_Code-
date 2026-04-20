@@ -1,0 +1,51 @@
+主要代码：
+int count=0;
+void generateP(int index){
+    if(index==n+1){
+       bool flag=true;//边界是一个合法方案
+       for(int i=1;i<=n;i++){
+          for(int j=i+1;j<=n;j++){
+          if(abs(i-j)==abs(P[i]-P[j]))flag=false;//不合法
+          }
+        }
+        if(flag)count++;//合法就让计数器++
+        return;
+    }
+    for(int x=1;x<=n;x++){
+    if(hashTable[x]==false){
+    P[index]=x;
+    hashTable[x]=true;
+    generateP(index+1);
+    hashTable[x]=false;
+     }
+    }
+}
+
+优化代码：
+int count=0;
+void generateP(int index){
+    if(index==n+1){
+    count++;
+    return;
+    }
+   for(int x=1;x<=n;x++){
+   if(hashTable[x]==false){
+   bool flag=true;
+   for(int pre=1;pre<index;pre++){
+    if(abs(index-pre)==abs(x-P[pre])){
+            flag=false;
+            break;
+
+          }
+      }
+
+   if(flag){
+   P[index]=x;
+   hashTable[x]=true;
+   generateP(index+1);
+   hashTable[x]=false;
+}
+
+    }
+    }
+}
