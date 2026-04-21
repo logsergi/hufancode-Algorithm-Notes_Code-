@@ -1,0 +1,18 @@
+//解决“寻找有序序列第一个满足某条件的元素的位置”问题的固定模板
+//之前的方法都采用了左闭右闭
+//二分区间为左开右闭的(left,right]
+//初值必须能覆盖解的所有可能取值，并且left比最小取值小1
+int solve(int left, int right){
+   int mid;
+   while(left+1<right){//left+1==right意味着唯一位置
+   mid=(left+right)/2;
+   if(条件成立){
+   right=mid;
+   }
+else{
+left=mid;
+}
+
+return right;//
+  }
+}
