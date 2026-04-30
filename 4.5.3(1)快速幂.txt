@@ -1,0 +1,51 @@
+给定三个正整数a、b、m(a<10九次方, b<10六次方, 1<m <10九次方),求a的b次方%m
+typedef longlong LL;
+LLpow(LL a, LL b, LL m){
+LL ans=1;
+  for(int i=0;i<b;i++){
+  ans=ans*a%m;
+}
+return ans;
+}
+
+时间复杂度是O(b)
+
+改进：
+用二分的思想（并且递归）：
+typedef long long LL;
+LL binaryPow(LL a, LL b, LL m){
+	if(b==0){
+		return 1;//如果b为0，那么a^0=1
+	}
+	if(b%2==1){
+		return a*binaryPow(a,b-1,m)%m;//b为奇数，转换为b-1
+	}
+	else{//b为偶数，转换为b/2
+		LL mul=binaryPow(a,b/2,m);
+		return mul*mul%m;
+	}
+}
+
+两个细节需要注意：
+① 如果初始时有可能大于等于m,那么需要在进入函数前就让a对m取模。
+② 如果m为1,可以直接在函数外部特判为0,不需要进入函数来计算(因为任何正整
+数对1取模一定等于0)。
+
+迭代写法：
+① 初始令ans等于1,用来存放累积的结果。
+②判断b的二进制末尾是否为1(即判断b&1是否为1,也可以理解为判断是否为奇数),如果是的话,令ans 乘上a的值。
+③ 令a平方,并将b右移一位(也可以理解为将b除以2)。
+④ 只要b大于0,就返回②
+
+typedef long long LL;
+LL binaryPow(LL a,LL b, LL m){
+	LL ans=1;
+	while(b>0){
+		if(b&1){//如果b的二进制末尾为1
+			ans=ans*a%m;//令ans累积上a
+		}
+		a=a*a%m;//令a平方
+		b>>=1;//将b的二进制右移一位，即b=b>>1或b=b/2
+	}
+	return ans;
+}
