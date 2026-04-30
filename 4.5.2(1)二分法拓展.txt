@@ -1,0 +1,36 @@
+const double eps=1e-5;//不断逼近，直至误差小于1*10的（-5）次方
+double f(double x){
+	return x*x;
+}
+double calSqrt(){
+	double left=1,right=2,mid;
+	while(right-left>eps){
+		mid=(left+right)/2;//取二者中点
+		if(f(mid)>2){
+			right=mid;
+		}
+		else{
+		left=mid;	//不断迫近
+		}//TODO
+	}
+	return mid;
+}
+
+通用写法：
+const double eps=1e-5;//不断逼近，直至误差小于1*10的（-5）次方
+double f(double x){
+	return ...;
+}
+double solve(double L,double R){
+double left=L,right=R,mid;
+while(right-left>eps){
+		mid=(left+right)/2;//取二者中点
+		if(f(mid)>2){
+			right=mid;
+		}
+		else{
+		left=mid;	//不断迫近
+		}//TODO
+	}
+return mid;
+}
