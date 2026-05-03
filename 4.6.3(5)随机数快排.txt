@@ -1,0 +1,20 @@
+#include<stdio.h>
+#include<stdlib.h>
+#include<time.h>
+int randPartition(int A[],int left,int right){
+	int p=(round(1.0)*rand()/RAND_MAX*(right-left)+left);
+	swap(A[p],A[left]);
+	int temp=A[left];
+	while(left<right){
+		while(left<right&&A[right]>temp){
+			right--;//TODO
+		}//TODO
+		A[left]=A[right];
+		while(left<right&&A[left]<=temp){
+			left++;//TODO
+		}
+		A[right]=A[left];
+	}
+	A[left]=temp;
+	return left;//返回相遇的下标
+}

@@ -1,0 +1,20 @@
+int Partition(int A[], int left, int right){
+   int temp=A[left];//左指针的变量放到temp里去
+   while(left<right){//左右指针不相遇
+      while(left<right&&A[right]>temp)right--;//右边还比枢轴大就一直左移
+      A[left]=A[right];//然后填空
+      while(left<right&&A[left]<=temp)left++;//左边还比枢轴小就一直右移
+      A[right]=A[left];//然后填空
+}
+     A[right]=temp;//把temp放到左右指针相遇的地方
+    return left;
+}
+
+然后进行递归：
+void quickSort(int A[],int left,int right){
+   if(left<right){//当前区间的长度不超过1
+    int pos=Partition(A,left,right);
+    quickSort(A,left,pos-1);//左子区间进行快排
+    quickSort(A,pos+1,right);//右子区间进行快排
+}
+}

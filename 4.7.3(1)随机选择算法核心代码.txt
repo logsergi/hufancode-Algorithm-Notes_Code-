@@ -1,0 +1,15 @@
+//随机选择算法，从A[left,right]中返回第K大的数
+int randSelect(int A[],int left,int right,int K){
+if(left==right)return A[left];//边界
+int p=randPartition(A,left,right);//随机数快排，划分后主元的位置为p
+int M=p-left+1;
+if(K==M)return A[p];
+if(K<M){
+return randSelect(A,left,p-1,K);
+}
+else{
+return randSelect(A,p+1,right,K-M);
+}
+}
+
+虽然随机选择算法时间复杂度最坏是O(n²),但是对于任意输入的期望时间复杂度却为O（n）
