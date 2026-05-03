@@ -1,0 +1,21 @@
+1.分数的表示
+struct Fraction{//分数
+   int up,down;//分子，分母
+};
+
+2.分数的化简
+Fraction reduction(Fraction result){
+if(result.down<0){
+result.up=-result.up;
+result.down=-result.down;
+}
+if(result.up==0){
+result.down=1;
+}
+else{
+int d=gcd(abs(result.up),abs(result.down));//找最大公约数
+result.up/=d;
+result.down/=d;
+}
+return result;
+}
