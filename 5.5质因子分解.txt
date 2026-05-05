@@ -1,0 +1,20 @@
+struct factor{
+ int x,cnt;//x为质因子，cnt为其个数
+}fac[10];
+
+1.枚举1-sqrt(n)范围内所有质因子p，判断p是否是n的因子
+if(n%prime[i]==0){
+fac[num].x=prime[i];
+fac[num].cnt=0;
+while(n%prime[i]==0){
+fac[num].cnt++;
+n/=prime[i];
+}
+num++;
+}
+//如果p不是n的因子，则直接跳过
+2.如果n仍然大于1，说明n有且仅有一个大于sqrt(n)的质因子，此时
+if(n!=1){
+fac[num].x=n;
+fac[num++].cnt=1;
+}
