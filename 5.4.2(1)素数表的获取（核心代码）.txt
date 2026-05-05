@@ -1,0 +1,9 @@
+const int maxn=101;
+int prime[maxn],pNum=0;
+bool p[maxn]={0};
+for(int i=1;i<maxn;i++){
+	if(isPrime(i)==true){
+		prime[pNum++]=i;
+		p[i]=true;//TODO
+	}//TODO
+}
