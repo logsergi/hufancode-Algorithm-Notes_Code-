@@ -1,0 +1,13 @@
+bign add(bign a,bign b){
+	bign c;
+	int carry=0;
+	for(int i=0;i<a.len||i<b.len;i++){
+		int temp=a.d[i]+b.d[i]+carry;
+		c.d[c.len++]=temp%10;
+		carry=temp/10;//TODO
+	}
+	if(carry!=0){
+		c.d[c.len++]=carry;//TODO
+	}
+	return c;
+}
