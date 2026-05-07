@@ -1,0 +1,13 @@
+//6.2.5clear()清空set中的所有元素
+#include<stdio.h>
+#include<set>
+using namespace std;
+int main(){
+	set<int> st;
+	st.insert(2);
+	st.insert(5);
+	st.insert(4);
+	st.clear();
+	printf("%d\n",st.size());
+	return 0;
+}
